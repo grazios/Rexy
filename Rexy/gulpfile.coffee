@@ -16,6 +16,7 @@ config =
     public: $public
     server: $server+"/app.coffee"
     stylus: $client+"/stylesheets/**/*.styl"
+    jade: $client+"/views/**/*.jade"
     images: [$client + '/images/**/*.*', '!'+$client+'/**/*.ico' ,'!'+$client+'/images/**/*.svg']
   outpath:
     stylus: $public+'/assets/stylesheets/'
@@ -25,9 +26,11 @@ config =
 gulp.task "browser-sync",->
   browserSync.init null,{
     proxy: "http://localhost:3000"
-    files: $src
     port: 5000
   }
+gulp.task "browser-sync-reload",->
+  browserSync.reload()
+
 
 # サーバ起動
 gulp.task "nodemon",(callback)->
@@ -41,6 +44,7 @@ gulp.task 'stylus', ['sprite_stylus'], ->
     .pipe $.plumber({errorHandler: $.notify.onError("<%= error.message %>")})
     .pipe $.stylus()
     .pipe gulp.dest(config.outpath.stylus)
+    .pipe browserSync.reload()
 
 gulp.task 'sprite_stylus', ->
   spriteDataStylus = gulp.src config.path.images
@@ -58,7 +62,7 @@ gulp.task 'sprite_stylus', ->
 
 gulp.task "watch", ()->
   gulp.watch config.path.stylus,["stylus"]
-
+  gulp.watch config.path.jade,["browser-sync-reload"]
 
 
 gulp.task "default",[
