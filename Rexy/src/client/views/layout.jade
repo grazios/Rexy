@@ -22,8 +22,8 @@ mixin htmlHeadBody
 
     block scripts
 
-
     block styles
+      link(rel="stylesheet" href="/assets/stylesheets/layout.css" title="Rexy Style")
 
   body(id="#{pageid}")
     block header
@@ -35,9 +35,5 @@ mixin htmlHeadBody
     block footer
       include footer
 
-//if env == "development"
-//  html(ng-app="eduma" ng-controller="AppCtrl")
-//    mixin htmlHeadBody
-//else
-html(ng-app="eduma" ng-controller="AppCtrl" translate-cloak)
+html
   mixin htmlHeadBody
