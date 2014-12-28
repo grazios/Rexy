@@ -1,0 +1,28 @@
+# Temporary Files
+#---------------------------
+# vim
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+# Backup files
+#---------------------------
+*~
+*.orig
+*.bak
+# OS dependent files
+#---------------------------
+.DS_Store
+Thumbs.db
+# Bundler specific
+#---------------------------
+/vendor/bundle/
+/.bundle/
+# Office specific
+~$*
+# Vagrant specific
+.vagrant/
+bower_components
+node_modules
+package.box
