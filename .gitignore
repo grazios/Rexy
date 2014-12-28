@@ -26,3 +26,4 @@ Thumbs.db
 bower_components
 node_modules
 package.box
+npm-debug.log
