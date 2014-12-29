@@ -16,10 +16,12 @@ config =
     public: $public
     server: $server+"/app.coffee"
     stylus: $client+"/stylesheets/**/*.styl"
+    coffee: $client+"/javascripts/**/*.coffee"
     jade: $client+"/views/**/*.jade"
     images: [$client + '/images/**/*.*', '!'+$client+'/**/*.ico' ,'!'+$client+'/images/**/*.svg']
   outpath:
     stylus: $public+'/assets/stylesheets/'
+    coffee: $public+'/assets/javascripts/'
 
 
 # ブラウザーシンク起動
@@ -44,7 +46,13 @@ gulp.task 'stylus', ['sprite_stylus'], ->
     .pipe $.plumber({errorHandler: $.notify.onError("<%= error.message %>")})
     .pipe $.stylus()
     .pipe gulp.dest(config.outpath.stylus)
-    .pipe browserSync.reload()
+
+# cssの生成
+gulp.task 'coffee', ->
+    gulp.src(config.path.coffee)
+    .pipe $.plumber({errorHandler: $.notify.onError("<%= error %>")})
+    .pipe $.coffee()
+    .pipe gulp.dest(config.outpath.coffee)
 
 gulp.task 'sprite_stylus', ->
   spriteDataStylus = gulp.src config.path.images
@@ -61,13 +69,15 @@ gulp.task 'sprite_stylus', ->
 
 
 gulp.task "watch", ()->
-  gulp.watch config.path.stylus,["stylus"]
+  gulp.watch config.path.stylus,["stylus","browser-sync-reload"]
+  gulp.watch config.path.coffee,["coffee","browser-sync-reload"]
   gulp.watch config.path.jade,["browser-sync-reload"]
 
 
 gulp.task "default",[
-  "stylus"
   "nodemon"
   "browser-sync"
+  "stylus"
+  "coffee"
   "watch"
 ],->
