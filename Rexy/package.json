@@ -25,9 +25,20 @@
     "gulp-watch": "^3.0.0",
     "gulp.spritesmith": "^2.4.0",
     "jade": "^1.8.2",
+    "karma-cli": "0.0.4",
     "method-override": "^2.3.0"
   },
   "devDependencies": {
-    "coffee-script": "^1.8.0"
+    "chai": "^1.10.0",
+    "coffee-script": "^1.8.0",
+    "karma": "^0.12.28",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^0.1.7",
+    "karma-cli": "0.0.4",
+    "karma-coffee-preprocessor": "^0.2.1",
+    "karma-mocha": "^0.1.10",
+    "karma-phantomjs-launcher": "^0.1.4",
+    "mocha": "^2.1.0",
+    "phantomjs": "^1.9.13"
   }
 }
