@@ -50,7 +50,7 @@ express_init_basic = (app)->
 express_init_routes = (app, mongoose)->
   require("./routes/home")(app, mongoose)
 
-schemas = mongoose_connect(mongoose, config)
+#schemas = mongoose_connect(mongoose, config)
 app = express()
 express_init_basic(app)
 express_init_routes(app, mongoose)

@@ -30,7 +30,9 @@
     "gulp.spritesmith": "^2.4.0",
     "jade": "^1.8.2",
     "karma-cli": "0.0.4",
-    "method-override": "^2.3.0"
+    "method-override": "^2.3.0",
+    "mongodb": "^1.4.26",
+    "mongoose": "^3.8.21"
   },
   "devDependencies": {
     "chai": "^1.10.0",
