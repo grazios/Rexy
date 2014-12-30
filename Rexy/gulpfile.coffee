@@ -1,9 +1,10 @@
 "use strict"
 gulp = require 'gulp'
 gutil = require "gulp-util"
+bower = require 'main-bower-files'
 browserSync = require "browser-sync"
 spritesmith = require 'gulp.spritesmith'
-
+isRelease = gutil.env.release?
 $ = require("gulp-load-plugins")()
 
 $public = "./public"
@@ -22,6 +23,7 @@ config =
   outpath:
     stylus: $public+'/assets/stylesheets/'
     coffee: $public+'/assets/javascripts/'
+    bower: $public+'/assets/libs'
 
 
 # ブラウザーシンク起動
@@ -47,12 +49,19 @@ gulp.task 'stylus', ['sprite_stylus'], ->
     .pipe $.stylus()
     .pipe gulp.dest(config.outpath.stylus)
 
-# cssの生成
+# coffeeの生成
 gulp.task 'coffee', ->
     gulp.src(config.path.coffee)
     .pipe $.plumber({errorHandler: $.notify.onError("<%= error %>")})
     .pipe $.coffee()
     .pipe gulp.dest(config.outpath.coffee)
+
+#bowerコンポーネンツあたり
+gulp.task 'bower', ->
+  gulp.src(bower())
+    .pipe $.if isRelease, $.uglify({preserveComments:'some'})
+    .pipe $.flatten()
+    .pipe (gulp.dest config.outpath.bower)
 
 gulp.task 'sprite_stylus', ->
   spriteDataStylus = gulp.src config.path.images
@@ -75,6 +84,7 @@ gulp.task "watch", ()->
 
 
 gulp.task "default",[
+  "bower"
   "nodemon"
   "browser-sync"
   "stylus"
