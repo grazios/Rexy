@@ -1,0 +1,9 @@
+extends layout
+block append vars
+  -var title = "Home"
+
+block content
+  ul
+    li #{user.id}
+    li #{user.displayName}
+    li #{user.provider}

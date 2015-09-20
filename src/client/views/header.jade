@@ -1,0 +1,7 @@
+header
+  h1 #{title}
+  div
+    if isAuthorized
+      p ようこそ#{user.user_name}さん<img src="#{user.photo}"/>
+    else
+      p loginしてね
