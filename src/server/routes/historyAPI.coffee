@@ -1,7 +1,9 @@
 module.exports = (app, connect) ->
-  app.get "/api/history/:id", (req, res) ->
+  app.get "/history/:id", (req, res) ->
   	result =
       query: req.params.id
-    return res.json JSON.stringify(result)
+    res.send JSON.stringify(result)
+    return
 
   app.post "/history/:id", (req, res) ->
+    

@@ -16,7 +16,7 @@ $client = "./src/client"
 config =
   path:
     public: $public
-    server: $server+"/**/*.coffee"
+    server: $server+"/app.coffee"
     stylus: $client+"/stylesheets/**/*.styl"
     coffee: $client+"/javascripts/**/*.coffee"
     spec: "test/mocha/**/*.coffee"
@@ -31,7 +31,7 @@ config =
 # ブラウザーシンク起動
 gulp.task "browser-sync",->
   browserSync.init null,{
-    proxy: "http://localhost:5200"
+    proxy: "http://localhost:5100"
     port: 5250
   }
 gulp.task "browser-sync-reload",->
@@ -87,7 +87,7 @@ gulp.task "mocha", ->
 
 gulp.task "watch-mocha", ()->
   gulp.watch [
-    config.path.server
+    config.path.coffee
     config.path.spec
   ],["mocha"]
 

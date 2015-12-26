@@ -51,7 +51,7 @@ express_init_basic = (app)->
 express_init_routes = (app, db)->
   require("./locals")(app, db)
   require("./routes/home")(app, db)
-  require("./routes/historyAPI")(app, db)
+  require("./routes/api")(app, db)
   require("./routes/debug")(app, db)
 
 
