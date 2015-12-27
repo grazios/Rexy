@@ -17,11 +17,11 @@ ul {
   list-style: none;
   padding: 0;
 }
+button,
 input,
 textarea {
   background: transparent;
   border: none;
-  border-radius: 20px;
   outline: 0;
 }
 input::-webkit-input-placeholder,
@@ -62,13 +62,19 @@ header h2 {
   font-size: 18px;
   font-weight: bold;
 }
-header .btnMainMenu {
+header #btnMainMenu {
   float: right;
   margin-right: -15px;
   padding: 13px 15px;
   background: transparent;
   border: none;
   font-size: 18px;
+}
+header #btnMainMenu:hover {
+  opacity: 0.6;
+}
+header .mainMenu {
+  display: none;
 }
 main {
   position: relative;
@@ -174,6 +180,22 @@ main article {
 /*===========================
 createHistory
 ============================*/
+#createHistory .event .btnCreateHistory {
+  position: absolute;
+  top: -10%;
+  right: 80px;
+  z-index: 3;
+  width: 100px;
+  height: 32px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+}
+#createHistory .event .btnCreateHistory:hover {
+  opacity: 0.6;
+}
 #createHistory .event .historyTitle input[type="text"] {
   text-align: center;
 }

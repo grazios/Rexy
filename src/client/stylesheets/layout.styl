@@ -14,11 +14,12 @@ ul
   list-style none
   padding 0
 
-input,textarea
+button,input,textarea
   background transparent
   border none
-  border-radius 20px
   outline 0
+
+input,textarea
   &::-webkit-input-placeholder
     color #9CC3C3
   &:focus
@@ -50,13 +51,17 @@ header
     margin 4px 0
     font-size 18px
     font-weight bold
-  .btnMainMenu
+  #btnMainMenu
     float right
     margin-right -15px
     padding 13px 15px
     background transparent
     border none
     font-size 18px
+    &:hover
+      opacity 0.6
+  .mainMenu
+    display none
 
 main
   position relative
@@ -150,12 +155,25 @@ main
         text-overflow: ellipsis;
 
 
-
 /*===========================
 createHistory
 ============================*/
 #createHistory
   .event
+    .btnCreateHistory
+      position absolute
+      top -10%
+      right 80px
+      z-index 3
+      width 100px
+      height 32px
+      border 1px solid #333
+      border-radius 4px
+      font-family 'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',Arial, Helvetica, sans-serif
+      font-size 12px
+      cursor pointer
+      &:hover
+        opacity 0.6
     .historyTitle
       input[type="text"]
         text-align center
