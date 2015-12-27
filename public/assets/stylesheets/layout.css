@@ -1,3 +1,148 @@
+/*===========================
+setting
+============================*/
+html {
+  height: 100%;
+  box-sizing: border-box;
+  font-family: 'ヒラギノ角ゴ Pro W3', 'Hiragino Kaku Gothic Pro', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', Arial, Helvetica, sans-serif;
+  color: #333;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  word-break: break-all;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+/*===========================
+layout
+============================*/
 body {
   height: 100%;
+}
+header {
+  position: fixed;
+  padding: 0 24px;
+  z-index: 1;
+  width: 100%;
+  height: 44px;
+}
+header h2 {
+  float: left;
+  margin: 4px 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+header .btnMainMenu {
+  float: right;
+  margin-right: -15px;
+  padding: 13px 15px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+}
+main {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  padding: 0;
+  background: #b3e7e8;
+}
+main article {
+  height: 100%;
+}
+.event,
+.eventNav {
+  font-family: 'Hiragino Mincho ProN', 'ヒラギノ明朝 Pro W6', 'Hiragino Mincho Pro', 'HGS明朝E', 'ＭＳ Ｐ明朝', serif !important;
+}
+.event {
+  position: absolute;
+  top: 15%;
+  width: 100%;
+  height: 85%;
+}
+.event .historyTitle {
+  position: absolute;
+  top: -10%;
+  width: 100%;
+  margin: 0;
+  font-size: 18px;
+  text-align: center;
+}
+.event .eventTitle {
+  float: left;
+  margin: 0;
+  padding-left: 24px;
+  width: 40%;
+  font-size: 16px;
+}
+.event .eventText {
+  overflow: scroll;
+  float: left;
+  margin: 0;
+  width: 60%;
+  max-width: 640px;
+  height: 60%;
+  font-size: 14px;
+  line-height: 170%;
+}
+.eventNav {
+  position: absolute;
+  bottom: 20%;
+  left: 2%;
+  padding: 0;
+  margin: 0 auto;
+  width: 96%;
+}
+.eventNav:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  margin: 0 -2%;
+  width: 104%;
+  height: 4px;
+  background: #fff;
+}
+.eventNav ul {
+  padding: 0 16px;
+  margin: 0;
+  width: 100%;
+}
+.eventNav ul li {
+  position: absolute;
+  top: 0;
+  z-index: 2;
+}
+.eventNav ul li .time {
+  position: absolute;
+  top: -28px;
+  margin-left: -12px;
+  text-align: center;
+  width: 40px;
+  font-size: 11px;
+  font-weight: bold;
+}
+.eventNav ul li .point {
+  position: absolute;
+  top: -6px;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 16px;
+}
+.eventNav ul li h3 {
+  position: absolute;
+  top: 57px;
+  margin: 0 0 0 -14px;
+  width: 112px;
+  text-align: left;
+  font-size: 10px;
+  transform: rotate(60deg);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

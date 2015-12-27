@@ -1,7 +1,11 @@
-header
-  h1 #{title}
-  div
-    if isAuthorized
-      p ようこそ#{user.user_name}さん<img src="#{user.photo}"/>
-    else
-      p loginしてね
+header#header
+  h2 #{projectName}
+  button.fa.fa-bars.btnMainMenu
+  div.mainMenu(style="display:none;")
+    a(href="/logout") logout
+    br
+    a(href="auth/facebook") facebooklogin
+    br
+    a(href="auth/twitter") twitterlogin
+    br
+    a(href="/debug") debug

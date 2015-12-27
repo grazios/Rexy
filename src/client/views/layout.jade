@@ -1,39 +1,38 @@
 doctype html
--var projectName = "Rexy"
+-var projectName = "rexy"
 
 block vars
   -var pageid = "body"
-mixin htmlHeadBody
-  head
-    meta(charset="UTF-8")
 
-    block title
-      title#title #{projectName}
-    block base
-      base(href="/")
-
-    meta(name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1")
-    meta(name="description" content="")
-    meta(name="keywords" content="")
-    meta(name="author" content="")
-    meta(name="generator" content="")
-
-    link(rel="shortcut icon" href="/images/favicon.ico")
-
-    block scripts
-
-    block styles
-      link(rel="stylesheet" href="/assets/stylesheets/layout.css" title="Rexy Style")
+html
+  head(prefix='og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#')
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='format-detection', content='telephone=no')
+    meta(name='description', content='')
+    meta(name='keywords', content='')
+    meta(property='og:title', content='')
+    meta(property='og:description', content='')
+    meta(property='og:url', content='')
+    meta(property='og:image', content='')
+    meta(property='og:site_name', content='')
+    meta(property='og:type', content='website')
+    meta(property='og:locale', content='ja_JP')
+    title #{titile}
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css')
+    link(rel='stylesheet', href='/assets/stylesheets/layout.css')
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.0/animate.min.css')
 
   body(id="#{pageid}")
     block header
       include header
 
-    div#contents_wrap
-      block content
+    block content
 
     block footer
       include footer
 
-html
-  mixin htmlHeadBody
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+    script(src='/assets/javascripts/app.js')
