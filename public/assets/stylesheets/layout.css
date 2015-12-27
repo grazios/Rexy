@@ -17,6 +17,32 @@ ul {
   list-style: none;
   padding: 0;
 }
+input,
+textarea {
+  background: transparent;
+  border: none;
+  border-radius: 20px;
+  outline: 0;
+}
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #9cc3c3;
+}
+input:focus::-webkit-input-placeholder,
+textarea:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+input:hover::-webkit-input-placeholder,
+textarea:hover::-webkit-input-placeholder {
+  color: #98adad;
+}
+input:hover:focus::-webkit-input-placeholder,
+textarea:hover:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+textarea {
+  width: 100%;
+}
 /*===========================
 layout
 ============================*/
@@ -80,7 +106,7 @@ main article {
   font-size: 16px;
 }
 .event .eventText {
-  overflow: scroll;
+  overflow-y: scroll;
   float: left;
   margin: 0;
   width: 60%;
@@ -97,8 +123,7 @@ main article {
   margin: 0 auto;
   width: 96%;
 }
-.eventNav:before {
-  content: "";
+.eventNav .eventLine {
   position: absolute;
   top: 0;
   z-index: 1;
@@ -145,4 +170,35 @@ main article {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+/*===========================
+createHistory
+============================*/
+#createHistory .event .historyTitle input[type="text"] {
+  text-align: center;
+}
+#createHistory .event .historyTitle input[type="text"] ::-webkit-input-placeholder {
+  text-align: center;
+}
+#createHistory .event .eventText textarea {
+  width: 100%;
+  height: 100%;
+}
+#createHistory .eventNav .eventLine:hover {
+  cursor: pointer;
+}
+#createHistory .eventNav .eventLine:hover:before {
+  content: '+';
+  position: absolute;
+  top: -14px;
+  left: 50%;
+  margin-left: -16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 32px;
+  background: #fff;
+  line-height: 29px;
+  text-align: center;
+  font-size: 32px;
+  font-style: normal;
 }
