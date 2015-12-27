@@ -35,6 +35,7 @@
     "method-override": "^2.3.0",
     "mongodb": "^1.4.26",
     "mongoose": "^3.8.21",
+    "mysql": "felixge/node-mysql",
     "passport": "^0.2.2",
     "passport-facebook": "^2.0.0",
     "passport-twitter": "^1.0.3"
@@ -54,7 +55,6 @@
     "karma-phantomjs-launcher": "^0.2.1",
     "main-bower-files": "^2.4.1",
     "mocha": "^2.3.2",
-    "mysql": "^2.8.0",
     "phantomjs": "^1.9.13",
     "request": "^2.61.0",
     "supertest": "^1.1.0"
