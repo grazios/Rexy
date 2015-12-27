@@ -12,21 +12,24 @@ module.exports = (app, isLogined, connection) ->
       txt
     ).bind(this)
 
+  app.get "/api/histories", (req, res) ->
+    entity = new History(connection,res)
+    try
+      entity.get()
+    catch error
+      res.status(500).send error.message
+
   app.get "/api/history/:id", (req, res) ->
-    entity = new History(connection)
+    entity = new History(connection,res)
     param =
       id: req.params.id
     try
       result = entity.get(param)
-      if result?
-        res.send result[0]
-      else
-        res.status(404).send "OMG :("
     catch error
       res.status(500).send error.message
 
 
-  app.post "/api/history",isLogined, (req, res) ->
+  app.post "/api/history", (req, res) ->
     entity = new History(connection)
 
     try

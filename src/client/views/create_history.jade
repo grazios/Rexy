@@ -2,6 +2,9 @@ extends layout
 block append vars
   -var title = "Home"
   -var pageid = "createHistory"
+block append scripts
+  script(src='/assets/javascripts/history.js')
+
 
 block content
   main
@@ -9,7 +12,7 @@ block content
       div.event
         button.btnCreateHistory 新規作成
         h1.historyTitle
-          input(type="text" placeholder="歴史のタイトル")
+          input#historySubject(type="text" placeholder="歴史のタイトル")
         h2.eventTitle
           input(type="text" placeholder="イベントのタイトル")
         p.eventText

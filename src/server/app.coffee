@@ -104,6 +104,7 @@ passport_init = (app, connect)->
 isLogined = (req,res,next)->
   if req.isAuthenticated()
     return next()
+  res.status(403)
   res.redirect("/")
 
 ###
