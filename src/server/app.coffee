@@ -48,10 +48,10 @@ express_init_basic = (app)->
   #app.use staticAsset __dirname + "/../public/"
   app.use express.static __dirname + "/../../public/"
 
-express_init_routes = (app, db)->
+express_init_routes = (app, isLogined, db)->
   require("./locals")(app, db)
   require("./routes/home")(app, db)
-  require("./routes/api")(app, db)
+  require("./routes/api")(app, isLogined, db)
   require("./routes/debug")(app, db)
 
 
@@ -101,6 +101,10 @@ passport_init = (app, connect)->
     res.send JSON.stringify(result)
     return
 
+isLogined = (req,res,next)->
+  if req.isAuthenticated()
+    return next()
+  res.redirect("/")
 
 ###
   Exit Initialize Methods
@@ -109,7 +113,7 @@ connect = mysql_connect(mysql, config)
 app = express()
 express_init_basic(app)
 passport_init(app, connect)
-express_init_routes(app, connect)
+express_init_routes(app, isLogined, connect)
 
 server = app.listen config.express.port
 
