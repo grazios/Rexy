@@ -1,13 +1,6 @@
-isOkHistoryParam = (param,res)->
-  result = true
-  unless param.subject?
-    res.status(400).send "OMG :("
-    result = false
-  unless param.abstract?
-    res.status(400).send "OMG :("
-    result = false
+History = require("../models/History")
 
-  return result
+
 
 module.exports = (app, isLogined, connection) ->
   connection.config.queryFormat = (query, values) ->
@@ -20,33 +13,30 @@ module.exports = (app, isLogined, connection) ->
     ).bind(this)
 
   app.get "/api/history/:id", (req, res) ->
+    entity = new History(connection)
     param =
-      "id": req.params.id
-
-    result = connection.query "SELECT * FROM histories WHERE ?",param,(err,results)->
-      if err
-        res.status(500).send "OMG :("
+      id: req.params.id
+    try
+      result = entity.get(param)
+      if result?
+        res.send result[0]
       else
-        if results.length == 0
-          res.status(404).send "OMG :("
-        else
-          res.status(200).send JSON.stringify(results[0])
-      return
+        res.status(404).send "OMG :("
+    catch error
+      res.status(500).send error.message
+
 
   app.post "/api/history",isLogined, (req, res) ->
-    unless isOkHistoryParam req.body,res
-      return
+    entity = new History(connection)
 
-    param =
-      "subject"  : req.body.subject
-      "abstract" : req.body.abstract
-
-    result = connection.query "INSERT INTO histories SET ?",param,(err,results)->
-      if err
-        res.status(500).send "OMG :("
-      else
-        res.status(200).send JSON.stringify(results)
-      return
+    try
+      result = entity.create(
+        "subject"  : req.body.subject
+        "abstract" : req.body.abstract
+      )
+      res.send result
+    catch error
+      res.status(500).send error.message
 
   app.put "/api/history/:id",isLogined, (req, res) ->
     unless isOkHistoryParam req.body,res
