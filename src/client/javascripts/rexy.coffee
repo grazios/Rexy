@@ -66,7 +66,8 @@
       #left = i === 0 ? 0 : 100;
       if i != event.length - 1
         left = opt.showCaseWidth / opt.range * (event.year - (opt.startYear))
-      eventHTML = eventHTML + '<li class=\'animated fadeIn\' style=\'left:' + left + 'px\' id=\'event_' + event.id + '\'>' + '<div class=\'time\'>' + event.year + '</div><div class=\'point\'></div>' + '<h3>' + event.subject + '</h3>' + '</li>\r\n'
+        left = left / opt.showCaseWidth * 100
+      eventHTML = eventHTML + '<li class=\'animated fadeIn\' style=\'left:' + left + '%\' id=\'event_' + event.id + '\'>' + '<div class=\'time\'>' + event.year + '</div><div class=\'point\'></div>' + '<h3>' + event.subject + '</h3>' + '</li>\r\n'
     $('.eventNav ul').append eventHTML
   return
 ).call this

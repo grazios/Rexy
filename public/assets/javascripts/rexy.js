@@ -63,8 +63,9 @@
         left = void 0;
         if (i !== event.length - 1) {
           left = opt.showCaseWidth / opt.range * (event.year - opt.startYear);
+          left = left / opt.showCaseWidth * 100;
         }
-        return eventHTML = eventHTML + '<li class=\'animated fadeIn\' style=\'left:' + left + 'px\' id=\'event_' + event.id + '\'>' + '<div class=\'time\'>' + event.year + '</div><div class=\'point\'></div>' + '<h3>' + event.subject + '</h3>' + '</li>\r\n';
+        return eventHTML = eventHTML + '<li class=\'animated fadeIn\' style=\'left:' + left + '%\' id=\'event_' + event.id + '\'>' + '<div class=\'time\'>' + event.year + '</div><div class=\'point\'></div>' + '<h3>' + event.subject + '</h3>' + '</li>\r\n';
       });
       return $('.eventNav ul').append(eventHTML);
     });
