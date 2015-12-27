@@ -22,11 +22,12 @@ config =
     spec: "test/mocha/**/*.coffee"
     jade: $client+"/views/**/*.jade"
     images: [$client + '/images/**/*.*', '!'+$client+'/**/*.ico' ,'!'+$client+'/images/**/*.svg']
+    lib: $client+"/lib/**/*.*"
   outpath:
     stylus: $public+'/assets/stylesheets/'
     coffee: $public+'/assets/javascripts/'
     bower: $public+'/assets/libs'
-
+    lib: $public+"/assets/lib/"
 
 # ブラウザーシンク起動
 gulp.task "browser-sync",->
@@ -36,7 +37,6 @@ gulp.task "browser-sync",->
   }
 gulp.task "browser-sync-reload",->
   browserSync.reload()
-
 
 # サーバ起動
 gulp.task "nodemon",(callback)->
@@ -57,6 +57,11 @@ gulp.task 'coffee', ->
     .pipe $.plumber({errorHandler: $.notify.onError("<%= error %>")})
     .pipe $.coffee()
     .pipe gulp.dest(config.outpath.coffee)
+
+# libのコピー
+gulp.task 'lib', ->
+    gulp.src(config.path.lib)
+    .pipe gulp.dest(config.outpath.lib)
 
 #bowerコンポーネンツあたり
 gulp.task 'bower', ->
@@ -110,5 +115,6 @@ gulp.task "default",[
   "browser-sync"
   "stylus"
   "coffee"
+  "lib"
   "watch"
 ],->

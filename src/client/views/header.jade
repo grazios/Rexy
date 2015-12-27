@@ -1,11 +1,22 @@
 header#header
   h2 #{projectName}
-  button.fa.fa-bars.btnMainMenu
+
+  .pure-container.fa.fa-bars(data-effect='pure-effect-push')
+    input#pure-toggle-right.pure-toggle(type='checkbox', data-toggle='right')
+    label.pure-toggle-label(for='pure-toggle-right', data-toggle-label='right')
+      span.pure-toggle-icon
+    nav.pure-drawer(data-position='right')
+      p(style='padding: 100px 20px; margin: 0;')
+        a(href="/logout") logout
+        br
+        a(href="auth/facebook") facebooklogin
+        br
+        a(href="auth/twitter") twitterlogin
+        br
+        a(href="/debug") debug
+    .pure-pusher-container
+      .pure-pusher
+        p(style='width: 300px; height: 1800px; margin: 100px auto;') Insert your main content here
+    label.pure-overlay(for='pure-toggle-right', data-overlay='right')
+
   div.mainMenu(style="display:none;")
-    a(href="/logout") logout
-    br
-    a(href="auth/facebook") facebooklogin
-    br
-    a(href="auth/twitter") twitterlogin
-    br
-    a(href="/debug") debug
