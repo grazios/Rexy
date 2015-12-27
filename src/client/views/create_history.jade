@@ -1,0 +1,15 @@
+extends layout
+block append vars
+  -var title = "Home"
+  -var pageid = "createHistory"
+
+block content
+  main
+    article
+      div.event
+        h1.historyTitle
+          input(type="text")
+        h2.eventTitle event_title
+        p.eventText event_text あ
+      div.eventNav
+        ul
