@@ -8,8 +8,11 @@ block content
     article
       div.event
         h1.historyTitle
-          input(type="text")
-        h2.eventTitle event_title
-        p.eventText event_text あ
+          input(type="text" placeholder="歴史のタイトル")
+        h2.eventTitle
+          input(type="text" placeholder="イベントのタイトル")
+        p.eventText
+          textarea(placeholder="イベントの概要")
       div.eventNav
+        i.eventLine
         ul
